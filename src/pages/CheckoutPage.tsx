@@ -230,9 +230,9 @@ function CheckoutForm({
                         fontFamily: 'Manrope, sans-serif',
                         lineHeight: '24px',
                     },
-                    focus: { color: '#EF2460' },
+                    focus: { color: '#6A3E1D' },
                     valid: { color: '#1A1A1A' },
-                    invalid: { color: '#EF2460' }
+                    invalid: { color: '#6A3E1D' }
                 }
             });
 
@@ -298,7 +298,7 @@ function CheckoutForm({
             <button
                 disabled={isProcessing || !isReady || !isFormComplete}
                 id="submit"
-                className="w-full bg-[#EF2460] text-white py-4 rounded-xl font-bold text-base shadow-[0_10px_20px_rgba(239,36,96,0.2)] hover:shadow-[0_15px_30px_rgba(239,36,96,0.3)] hover:scale-[1.01] transition-all disabled:opacity-50 disabled:grayscale disabled:scale-100 disabled:shadow-none mt-4 disabled:cursor-not-allowed"
+                className="w-full bg-[#6A3E1D] text-white py-4 rounded-xl font-bold text-base shadow-[0_10px_20px_rgba(239,36,96,0.2)] hover:shadow-[0_15px_30px_rgba(239,36,96,0.3)] hover:scale-[1.01] transition-all disabled:opacity-50 disabled:grayscale disabled:scale-100 disabled:shadow-none mt-4 disabled:cursor-not-allowed"
             >
                 {isProcessing ? "Processing..." : (!isReady ? "Loading Secure Payment..." : (!isFormComplete ? "Complete Details to Pay" : `Pay £${totalAmount.toLocaleString()}`))}
             </button>
@@ -458,7 +458,7 @@ export default function CheckoutPage() {
                 <div className="text-center">
                     <h2 className="text-2xl font-bold text-gray-800 mb-4">Your cart is empty</h2>
                     <p className="text-gray-500 mb-6">Looks like checkout was accessed without items.</p>
-                    <button onClick={() => navigate("/shop")} className="text-[#EF2460] font-bold hover:underline">Return to Shop</button>
+                    <button onClick={() => navigate("/shop")} className="text-[#6A3E1D] font-bold hover:underline">Return to Shop</button>
                 </div>
             </div>
         );
@@ -473,9 +473,9 @@ export default function CheckoutPage() {
                 <div className="mb-10 text-center lg:text-left">
                     <h1 className="text-4xl font-bold text-[#1A1A1A] mb-3 font-['Poppins']">Checkout</h1>
                     <div className="flex items-center justify-center lg:justify-start gap-2 text-sm text-gray-500 font-medium">
-                        <span className="hover:text-[#EF2460] cursor-pointer" onClick={() => navigate('/cart')}>Cart</span>
+                        <span className="hover:text-[#6A3E1D] cursor-pointer" onClick={() => navigate('/cart')}>Cart</span>
                         <span className="text-gray-300">›</span>
-                        <span className="text-[#EF2460] font-bold">Secure Checkout</span>
+                        <span className="text-[#6A3E1D] font-bold">Secure Checkout</span>
                         <span className="text-gray-300">›</span>
                         <span>Confirmation</span>
                     </div>
@@ -488,7 +488,7 @@ export default function CheckoutPage() {
                         {/* Customer Information */}
                         <div className="bg-white p-8 lg:p-10 rounded-[24px] shadow-sm border border-gray-100">
                             <h2 className="text-xl font-bold text-[#1A1A1A] mb-6 flex items-center gap-2">
-                                <span className="w-8 h-8 rounded-full bg-[#EF2460]/10 text-[#EF2460] flex items-center justify-center text-sm font-bold">1</span>
+                                <span className="w-8 h-8 rounded-full bg-[#6A3E1D]/10 text-[#6A3E1D] flex items-center justify-center text-sm font-bold">1</span>
                                 Contact Information
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -497,7 +497,7 @@ export default function CheckoutPage() {
                                     <input
                                         type="text"
                                         name="fullName"
-                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#EF2460] focus:ring-4 focus:ring-[#EF2460]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
+                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#6A3E1D] focus:ring-4 focus:ring-[#6A3E1D]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
                                         placeholder="Jane Doe"
                                         value={form.fullName}
                                         onChange={handleChange}
@@ -509,7 +509,7 @@ export default function CheckoutPage() {
                                     <input
                                         type="email"
                                         name="email"
-                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#EF2460] focus:ring-4 focus:ring-[#EF2460]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
+                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#6A3E1D] focus:ring-4 focus:ring-[#6A3E1D]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
                                         placeholder="jane@example.com"
                                         value={form.email}
                                         onChange={handleChange}
@@ -521,7 +521,7 @@ export default function CheckoutPage() {
                                     <input
                                         type="tel"
                                         name="phone"
-                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#EF2460] focus:ring-4 focus:ring-[#EF2460]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
+                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#6A3E1D] focus:ring-4 focus:ring-[#6A3E1D]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
                                         placeholder="+1 (555) 000-0000"
                                         value={form.phone}
                                         onChange={handleChange}
@@ -534,7 +534,7 @@ export default function CheckoutPage() {
                         {/* Shipping Address */}
                         <div className="bg-white p-8 lg:p-10 rounded-[24px] shadow-sm border border-gray-100">
                             <h2 className="text-xl font-bold text-[#1A1A1A] mb-6 flex items-center gap-2">
-                                <span className="w-8 h-8 rounded-full bg-[#EF2460]/10 text-[#EF2460] flex items-center justify-center text-sm font-bold">2</span>
+                                <span className="w-8 h-8 rounded-full bg-[#6A3E1D]/10 text-[#6A3E1D] flex items-center justify-center text-sm font-bold">2</span>
                                 Shipping Address
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -543,7 +543,7 @@ export default function CheckoutPage() {
                                     <input
                                         type="text"
                                         name="line1"
-                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#EF2460] focus:ring-4 focus:ring-[#EF2460]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
+                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#6A3E1D] focus:ring-4 focus:ring-[#6A3E1D]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
                                         placeholder="123 Main St"
                                         value={form.line1}
                                         onChange={handleChange}
@@ -555,7 +555,7 @@ export default function CheckoutPage() {
                                     <input
                                         type="text"
                                         name="line2"
-                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#EF2460] focus:ring-4 focus:ring-[#EF2460]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
+                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#6A3E1D] focus:ring-4 focus:ring-[#6A3E1D]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
                                         placeholder="Apt 4B"
                                         value={form.line2}
                                         onChange={handleChange}
@@ -566,7 +566,7 @@ export default function CheckoutPage() {
                                     <input
                                         type="text"
                                         name="city"
-                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#EF2460] focus:ring-4 focus:ring-[#EF2460]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
+                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#6A3E1D] focus:ring-4 focus:ring-[#6A3E1D]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
                                         placeholder="New York"
                                         value={form.city}
                                         onChange={handleChange}
@@ -578,7 +578,7 @@ export default function CheckoutPage() {
                                     <input
                                         type="text"
                                         name="postalCode"
-                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#EF2460] focus:ring-4 focus:ring-[#EF2460]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
+                                        className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:bg-white focus:border-[#6A3E1D] focus:ring-4 focus:ring-[#6A3E1D]/10 outline-none transition-all placeholder-gray-400 text-sm font-medium"
                                         placeholder="10001"
                                         value={form.postalCode}
                                         onChange={handleChange}
@@ -594,14 +594,14 @@ export default function CheckoutPage() {
                         {/* Payment Method Section */}
                         <div className="bg-white p-8 lg:p-10 rounded-[24px] shadow-sm border border-gray-100">
                             <h2 className="text-xl font-bold text-[#1A1A1A] mb-6 flex items-center gap-2">
-                                <span className="w-8 h-8 rounded-full bg-[#EF2460]/10 text-[#EF2460] flex items-center justify-center text-sm font-bold">3</span>
+                                <span className="w-8 h-8 rounded-full bg-[#6A3E1D]/10 text-[#6A3E1D] flex items-center justify-center text-sm font-bold">3</span>
                                 Payment Method
                             </h2>
 
                             <div className="flex gap-4 mb-8">
                                 <button
                                     onClick={() => setSelectedPaymentMethod("card")}
-                                    className={`flex-1 py-3 px-4 rounded-xl border-2 font-bold transition-all ${selectedPaymentMethod === "card" ? "border-[#EF2460] bg-[#EF2460]/5 text-[#EF2460]" : "border-gray-200 text-gray-500 hover:border-gray-300 bg-white"}`}
+                                    className={`flex-1 py-3 px-4 rounded-xl border-2 font-bold transition-all ${selectedPaymentMethod === "card" ? "border-[#6A3E1D] bg-[#6A3E1D]/5 text-[#6A3E1D]" : "border-gray-200 text-gray-500 hover:border-gray-300 bg-white"}`}
                                 >
                                     Credit Card
                                 </button>
@@ -697,14 +697,14 @@ export default function CheckoutPage() {
 
                                 <div className="flex justify-between items-center text-lg font-bold">
                                     <span className="text-[#1A1A1A]">Total</span>
-                                    <span className="text-[#EF2460]">
+                                    <span className="text-[#6A3E1D]">
                                         {form.country ? `£${finalTotal.toLocaleString()}` : 'Calculated at next step'}
                                     </span>
                                 </div>
                             </div>
 
-                            <div className="bg-[#EF2460]/5 p-6 rounded-[24px] border border-[#EF2460]/10">
-                                <h3 className="text-sm font-bold text-[#EF2460] mb-2 flex items-center gap-2">
+                            <div className="bg-[#6A3E1D]/5 p-6 rounded-[24px] border border-[#6A3E1D]/10">
+                                <h3 className="text-sm font-bold text-[#6A3E1D] mb-2 flex items-center gap-2">
                                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
                                     Secure Checkout
                                 </h3>

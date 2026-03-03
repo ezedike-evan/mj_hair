@@ -42,7 +42,7 @@ export default function ProductDetails() {
     if (product === undefined) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-[#EFDCD5]">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#EF2460]"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#6A3E1D]"></div>
             </div>
         );
     }
@@ -51,7 +51,7 @@ export default function ProductDetails() {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-[#EFDCD5] gap-4">
                 <h2 className="text-2xl font-bold text-gray-800">Product not found</h2>
-                <button onClick={() => navigate("/shop")} className="text-[#EF2460] font-bold hover:underline">Back to Shop</button>
+                <button onClick={() => navigate("/shop")} className="text-[#6A3E1D] font-bold hover:underline">Back to Shop</button>
             </div>
         );
     }
@@ -121,7 +121,7 @@ export default function ProductDetails() {
             <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
                 <button
                     onClick={() => navigate(-1)}
-                    className="flex items-center gap-2 text-gray-600 hover:text-[#EF2460] mb-8 font-semibold transition-colors"
+                    className="flex items-center gap-2 text-gray-600 hover:text-[#6A3E1D] mb-8 font-semibold transition-colors"
                 >
                     <ArrowLeft size={20} />
                     Back
@@ -148,7 +148,7 @@ export default function ProductDetails() {
                                     <button
                                         key={idx}
                                         onClick={() => setSelectedImage(img)}
-                                        className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 ${selectedImage === img ? 'border-[#EF2460] ring-2 ring-[#EF2460]/20' : 'border-gray-200 hover:border-[#EF2460]/50'}`}
+                                        className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 ${selectedImage === img ? 'border-[#6A3E1D] ring-2 ring-[#6A3E1D]/20' : 'border-gray-200 hover:border-[#6A3E1D]/50'}`}
                                     >
                                         <img src={img} alt="" className="w-full h-full object-cover" />
                                     </button>
@@ -165,7 +165,7 @@ export default function ProductDetails() {
                                     {title}
                                 </h1>
                                 <div className="flex items-center gap-4">
-                                    <span className="text-3xl font-bold text-[#EF2460] font-['Poppins']">
+                                    <span className="text-3xl font-bold text-[#6A3E1D] font-['Poppins']">
                                         £{price}
                                     </span>
                                     {stockQuantity > 0 ? (
@@ -255,7 +255,7 @@ export default function ProductDetails() {
                                     <div className="flex items-center gap-4 bg-gray-50 rounded-full p-1 border border-gray-200">
                                         <button
                                             onClick={handleDecrement}
-                                            className="w-10 h-10 flex items-center justify-center bg-white rounded-full text-gray-600 shadow-sm hover:text-[#EF2460] transition-colors disabled:opacity-50"
+                                            className="w-10 h-10 flex items-center justify-center bg-white rounded-full text-gray-600 shadow-sm hover:text-[#6A3E1D] transition-colors disabled:opacity-50"
                                             disabled={quantity <= 1}
                                         >
                                             <Minus size={18} />
@@ -263,7 +263,7 @@ export default function ProductDetails() {
                                         <span className="font-bold w-8 text-center text-lg text-gray-800">{quantity}</span>
                                         <button
                                             onClick={handleIncrement}
-                                            className="w-10 h-10 flex items-center justify-center bg-white rounded-full text-gray-600 shadow-sm hover:text-[#EF2460] transition-colors"
+                                            className="w-10 h-10 flex items-center justify-center bg-white rounded-full text-gray-600 shadow-sm hover:text-[#6A3E1D] transition-colors"
                                         >
                                             <Plus size={18} />
                                         </button>
@@ -281,7 +281,7 @@ export default function ProductDetails() {
                                     </button>
                                     <button
                                         onClick={handleBuyNow}
-                                        className="flex-1 py-4 px-8 bg-[#EF2460] text-white rounded-2xl font-bold hover:bg-[#D0184D] transition-all duration-300 shadow-[0_8px_20px_rgba(239,36,96,0.3)] hover:shadow-[0_12px_24px_rgba(239,36,96,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
+                                        className="flex-1 py-4 px-8 bg-[#6A3E1D] text-white rounded-2xl font-bold hover:bg-[#D0184D] transition-all duration-300 shadow-[0_8px_20px_rgba(239,36,96,0.3)] hover:shadow-[0_12px_24px_rgba(239,36,96,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
                                         disabled={stockQuantity === 0}
                                     >
                                         Buy Now
