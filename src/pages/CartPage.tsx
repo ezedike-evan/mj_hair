@@ -16,20 +16,20 @@ export default function CartPage() {
                     <div className="mb-10 text-center lg:text-left">
                         <h1 className="text-4xl font-bold text-[#1A1A1A] mb-3 font-['Poppins']">Shopping Cart</h1>
                         <p className="text-sm text-gray-500 font-medium">
-                            <span className="text-[#EF2460] font-bold">{cart.length} items</span> in your bag
+                            <span className="text-[#6A3E1D] font-bold">{cart.length} items</span> in your bag
                         </p>
                     </div>
 
                     {cart.length === 0 ? (
                         <div className="text-center py-24 bg-white rounded-[32px] shadow-sm max-w-2xl mx-auto border border-gray-100">
-                            <div className="w-24 h-24 bg-[#FFF0F4] rounded-full flex items-center justify-center mx-auto mb-6">
-                                <svg className="w-10 h-10 text-[#EF2460]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                            <div className="w-24 h-24 bg-[#6A3E1D]/25 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <svg className="w-10 h-10 text-[#6A3E1D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
                             </div>
                             <h2 className="text-2xl font-bold text-[#1A1A1A] mb-3 font-['Poppins']">Your cart is empty</h2>
                             <p className="text-gray-400 mb-8 max-w-sm mx-auto leading-relaxed">Looks like you haven't added anything to your cart yet. Discover our premium collection.</p>
                             <Link
                                 to="/shop"
-                                className="inline-flex items-center gap-2 bg-[#EF2460] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-[0_10px_20px_rgba(239,36,96,0.2)] hover:shadow-[0_15px_30px_rgba(239,36,96,0.3)] hover:-translate-y-0.5 transition-all"
+                                className="inline-flex items-center gap-2 bg-[#6A3E1D] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-[0_10px_20px_rgba(239,36,96,0.2)] hover:shadow-[0_15px_30px_rgba(239,36,96,0.3)] hover:-translate-y-0.5 transition-all"
                             >
                                 Start Shopping <span className="text-lg">→</span>
                             </Link>
@@ -77,14 +77,14 @@ export default function CartPage() {
                                                     <div className="flex items-center bg-[#F9FAFB] rounded-lg p-1 border border-gray-100">
                                                         <button
                                                             onClick={() => decreaseQuantity(item.productId)}
-                                                            className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#EF2460] hover:bg-white rounded-md transition-all font-bold"
+                                                            className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#6A3E1D] hover:bg-white rounded-md transition-all font-bold"
                                                         >
                                                             -
                                                         </button>
                                                         <span className="w-10 text-center text-sm font-bold text-[#1A1A1A]">{item.quantity}</span>
                                                         <button
                                                             onClick={() => increaseQuantity(item.productId)}
-                                                            className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#EF2460] hover:bg-white rounded-md transition-all font-bold"
+                                                            className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#6A3E1D] hover:bg-white rounded-md transition-all font-bold"
                                                         >
                                                             +
                                                         </button>
@@ -93,7 +93,7 @@ export default function CartPage() {
 
                                                 {/* Total */}
                                                 <div className="col-span-3 text-right w-full">
-                                                    <span className="text-lg font-bold text-[#EF2460]">
+                                                    <span className="text-lg font-bold text-[#6A3E1D]">
                                                         £{(item.price * item.quantity).toLocaleString()}
                                                     </span>
                                                 </div>
@@ -103,7 +103,7 @@ export default function CartPage() {
                                 </div>
 
                                 <div className="flex justify-between items-center px-2">
-                                    <Link to="/shop" className="text-gray-500 hover:text-[#EF2460] font-bold text-sm flex items-center gap-2 transition-colors">
+                                    <Link to="/shop" className="text-gray-500 hover:text-[#6A3E1D] font-bold text-sm flex items-center gap-2 transition-colors">
                                         ← Continue Shopping
                                     </Link>
                                     <button
@@ -141,14 +141,14 @@ export default function CartPage() {
                                         <div className="flex justify-between items-center mb-8">
                                             <span className="text-base font-bold text-[#1A1A1A]">Total</span>
                                             <div className="text-right">
-                                                <span className="block text-2xl font-bold text-[#EF2460]">£{totalAmount.toLocaleString()}</span>
+                                                <span className="block text-2xl font-bold text-[#6A3E1D]">£{totalAmount.toLocaleString()}</span>
                                                 <span className="text-[10px] text-gray-400 font-medium">+ Shipping</span>
                                             </div>
                                         </div>
 
                                         <button
                                             onClick={() => navigate("/checkout")}
-                                            className="w-full bg-[#EF2460] text-white py-4 rounded-xl font-bold text-sm shadow-[0_10px_20px_rgba(239,36,96,0.2)] hover:shadow-[0_15px_30px_rgba(239,36,96,0.3)] hover:scale-[1.01] transition-all flex items-center justify-center gap-2"
+                                            className="w-full bg-[#6A3E1D] text-white py-4 rounded-xl font-bold text-sm shadow-[0_10px_20px_rgba(239,36,96,0.2)] hover:shadow-[0_15px_30px_rgba(239,36,96,0.3)] hover:scale-[1.01] transition-all flex items-center justify-center gap-2"
                                         >
                                             Checkout Now
                                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
