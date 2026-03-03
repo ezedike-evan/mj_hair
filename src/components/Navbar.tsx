@@ -89,7 +89,7 @@ export default function Navbar() {
                             <div className="relative">
                                 <img src={cart} alt="" className="w-4 md:w-5 h-4 md:h-5" />
                                 {totalItems > 0 && (
-                                    <span className="absolute -top-1.5 -right-1.5 bg-[#C9834E] text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+                                    <span className="absolute -top-1.5 -right-1.5 bg-[#6A3E1D] text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
                                         {totalItems}
                                     </span>
                                 )}
@@ -140,7 +140,7 @@ export default function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                            className="absolute right-0 top-0 h-full w-[280px] bg-gradient-to-b from-[#EF2460] to-[#861134] shadow-2xl"
+                            className="absolute right-0 top-0 h-full w-[280px] bg-gradient-to-b from-[#6A3E1D] to-[#861134] shadow-2xl"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="flex flex-col h-full justify-center items-center px-8">

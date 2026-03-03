@@ -40,7 +40,7 @@ export default function ShopPage() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <h2 className="font-['Cambay'] font-bold text-5xl text-[#EF2460]">
+                        <h2 className="font-['Cambay'] font-bold text-5xl text-[#6A3E1D]">
                             Categories
                         </h2>
                         <div className="flex flex-col gap-4 font-['Comfortaa'] font-bold text-xl text-gray-400">
@@ -59,12 +59,12 @@ export default function ShopPage() {
                                             <div key={idx} className="relative">
                                                 {isActive && (
                                                     <motion.div
-                                                        className="absolute -left-[26px] top-0 bottom-0 w-1 bg-[#EF2460] rounded-full shadow-[0_0_10px_#EF2460]"
+                                                        className="absolute -left-[26px] top-0 bottom-0 w-1 bg-[#6A3E1D] rounded-full shadow-[0_0_10px_#6A3E1D]"
                                                         layoutId="activeCategoryIndicator"
                                                     />
                                                 )}
                                                 <motion.button
-                                                    className={`text-left transition-all ${isActive ? "text-[#EF2460]" : "hover:text-[#EF2460]"}`}
+                                                    className={`text-left transition-all ${isActive ? "text-[#6A3E1D]" : "hover:text-[#6A3E1D]"}`}
                                                     whileHover={{ x: 10 }}
                                                     onClick={() => setActiveCategory(category.name)}
                                                 >
@@ -90,7 +90,7 @@ export default function ShopPage() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                         >
-                            <h2 className="font-['Poppins'] font-semibold text-4xl text-[#EF2460] mb-4 lg:mb-0">
+                            <h2 className="font-['Poppins'] font-semibold text-4xl text-[#6A3E1D] mb-4 lg:mb-0">
                                 Shop Hairs
                             </h2>
                         </motion.div>
@@ -107,7 +107,7 @@ export default function ShopPage() {
                             <div className="relative">
                                 <button
                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                    className="w-full px-6 py-4 flex justify-between items-center rounded-2xl bg-white border border-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#EF2460]/20 transition-all active:scale-[0.99]"
+                                    className="w-full px-6 py-4 flex justify-between items-center rounded-2xl bg-white border border-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#6A3E1D]/20 transition-all active:scale-[0.99]"
                                 >
                                     <span className="font-['Comfortaa'] font-bold text-gray-700 capitalize">
                                         {activeCategory || "Select Category"}
@@ -116,7 +116,7 @@ export default function ShopPage() {
                                         animate={{ rotate: isDropdownOpen ? 180 : 0 }}
                                         transition={{ duration: 0.3 }}
                                     >
-                                        <svg className="w-5 h-5 text-[#EF2460]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-5 h-5 text-[#6A3E1D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </motion.div>
@@ -141,7 +141,7 @@ export default function ShopPage() {
                                                     }}
                                                     className={`w-full text-left px-6 py-3 font-['Manrope'] font-semibold transition-colors
                                                 ${activeCategory === category.name
-                                                            ? 'bg-[#EF2460]/5 text-[#EF2460]'
+                                                            ? 'bg-[#6A3E1D]/5 text-[#6A3E1D]'
                                                             : 'text-gray-600 hover:bg-gray-50'
                                                         }`}
                                                 >
@@ -160,9 +160,9 @@ export default function ShopPage() {
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     placeholder="Search for hair products..."
-                                    className="w-full px-6 py-4 pr-12 rounded-2xl bg-white border border-gray-100 focus:border-[#EF2460] focus:ring-2 focus:ring-[#EF2460]/10 focus:outline-none font-['Manrope'] text-gray-700 placeholder-gray-400 shadow-sm transition-all"
+                                    className="w-full px-6 py-4 pr-12 rounded-2xl bg-white border border-gray-100 focus:border-[#6A3E1D] focus:ring-2 focus:ring-[#6A3E1D]/10 focus:outline-none font-['Manrope'] text-gray-700 placeholder-gray-400 shadow-sm transition-all"
                                 />
-                                <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#EF2460] text-white p-2.5 rounded-xl hover:bg-[#C91A4B] transition shadow-md group-focus-within:scale-110">
+                                <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#6A3E1D] text-white p-2.5 rounded-xl hover:bg-[#C91A4B] transition shadow-md group-focus-within:scale-110">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
@@ -172,7 +172,7 @@ export default function ShopPage() {
 
                         {isLoading ? (
                             <div className="flex justify-center items-center h-64 w-full col-span-full">
-                                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#EF2460]"></div>
+                                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#6A3E1D]"></div>
                             </div>
                         ) : (
                             <motion.div

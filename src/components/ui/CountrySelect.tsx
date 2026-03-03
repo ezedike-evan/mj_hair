@@ -49,7 +49,7 @@ export const CountrySelect = ({
                             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                             <input
                                 type="text"
-                                className="w-full pl-9 pr-4 py-2 bg-gray-50 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#EF2460]/20"
+                                className="w-full pl-9 pr-4 py-2 bg-gray-50 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#6A3E1D]/20"
                                 placeholder="Search country..."
                                 autoFocus
                                 value={search}
@@ -61,7 +61,7 @@ export const CountrySelect = ({
                         {filteredCountries.map((country) => (
                             <div
                                 key={country.code}
-                                className={`p-3 rounded-lg flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors ${value === country.code ? 'bg-[#EF2460]/5 text-[#EF2460]' : 'text-gray-700'}`}
+                                className={`p-3 rounded-lg flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors ${value === country.code ? 'bg-[#6A3E1D]/5 text-[#6A3E1D]' : 'text-gray-700'}`}
                                 onClick={() => {
                                     onChange(country.code);
                                     setIsOpen(false);
@@ -69,7 +69,7 @@ export const CountrySelect = ({
                                 }}
                             >
                                 <span>{country.name}</span>
-                                {value === country.code && <Check className="w-4 h-4 text-[#EF2460]" />}
+                                {value === country.code && <Check className="w-4 h-4 text-[#6A3E1D]" />}
                             </div>
                         ))}
                     </div>

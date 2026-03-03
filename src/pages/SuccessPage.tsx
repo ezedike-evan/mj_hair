@@ -31,7 +31,7 @@ export default function SuccessPage() {
 
             <button
                 onClick={() => navigate("/")}
-                className="bg-[#EF2460] text-white px-10 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg"
+                className="bg-[#6A3E1D] text-white px-10 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg"
             >
                 Continue Shopping
             </button>

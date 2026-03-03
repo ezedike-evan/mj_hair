@@ -25,7 +25,7 @@ const Toast = ({ message, image, onClose }: ToastProps) => {
         >
             <div className="relative">
                 {/* Glowing bag icon container */}
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#EF2460] to-[#FF4D80] flex items-center justify-center shadow-lg shadow-[#EF2460]/30">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#6A3E1D] to-[#FF4D80] flex items-center justify-center shadow-lg shadow-[#6A3E1D]/30">
                     <ShoppingBag className="w-6 h-6 text-white" />
                 </div>
                 {/* Success check badge */}

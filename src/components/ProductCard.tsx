@@ -179,7 +179,7 @@ export default function ProductCard({
                         </svg>
                     </motion.button>
                     <motion.button
-                        className="absolute bottom-1 right-1 w-8 md:w-12 h-8 md:h-12 bg-[#EF2460] text-white rounded-full flex items-center justify-center shadow-[0_4px_14px_rgba(239,36,96,0.4)] z-30 pointer-events-auto"
+                        className="absolute bottom-1 right-1 w-8 md:w-12 h-8 md:h-12 bg-[#6A3E1D] text-white rounded-full flex items-center justify-center shadow-[0_4px_14px_rgba(239,36,96,0.4)] z-30 pointer-events-auto"
                         whileHover={{ scale: 1.2, backgroundColor: "#C91A4B" }}
                         whileTap={{ scale: 0.9 }}
                         onClick={(e) => {
@@ -195,7 +195,7 @@ export default function ProductCard({
                 </div>
 
                 <div className="px-4 py-2 relative mt-[-20px] z-20">
-                    <h3 className="font-['Poppins'] text-[#1A1A1A] font-semibold text-base md:text-xl mt-5 group-hover:text-[#EF2460] transition">
+                    <h3 className="font-['Poppins'] text-[#1A1A1A] font-semibold text-base md:text-xl mt-5 group-hover:text-[#6A3E1D] transition">
                         {title}
                     </h3>
                 </div>
@@ -240,7 +240,7 @@ export default function ProductCard({
                                             <button
                                                 key={idx}
                                                 onClick={() => setSelectedImage(img)}
-                                                className={`flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all duration-300 shadow-sm ${selectedImage === img ? 'border-[#EF2460] scale-110 ring-2 ring-[#EF2460]/20' : 'border-white/60 hover:border-[#EF2460]/50 hover:scale-105'}`}
+                                                className={`flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all duration-300 shadow-sm ${selectedImage === img ? 'border-[#6A3E1D] scale-110 ring-2 ring-[#6A3E1D]/20' : 'border-white/60 hover:border-[#6A3E1D]/50 hover:scale-105'}`}
                                             >
                                                 <img src={img} alt="" className="w-full h-full object-cover" />
                                             </button>
@@ -254,13 +254,13 @@ export default function ProductCard({
                                 <div className="mb-6">
                                     <h2 className="font-['Cambay'] text-4xl font-bold text-gray-900 mb-2 tracking-tight leading-tight">{title}</h2>
                                     <div className="flex items-center gap-3 mb-2">
-                                        <p className="text-[#EF2460] font-bold text-3xl font-['Poppins']">{displayPrice}</p>
-                                        <span className="px-3 py-1 bg-[#EF2460]/10 text-[#EF2460] text-xs font-bold rounded-full uppercase tracking-wider">
+                                        <p className="text-[#6A3E1D] font-bold text-3xl font-['Poppins']">{displayPrice}</p>
+                                        <span className="px-3 py-1 bg-[#6A3E1D]/10 text-[#6A3E1D] text-xs font-bold rounded-full uppercase tracking-wider">
                                             {stockQuantity && quantity >= (typeof stockQuantity === 'string' ? parseInt(stockQuantity) : stockQuantity) ? "Max Stock" : "In Stock"}
                                         </span>
                                     </div>
                                     <div className="flex flex-col gap-2 mt-2">
-                                        <p className="text-gray-500 font-medium text-sm border-l-2 border-[#EF2460]/30 pl-3">{subtitle}</p>
+                                        <p className="text-gray-500 font-medium text-sm border-l-2 border-[#6A3E1D]/30 pl-3">{subtitle}</p>
 
                                         {/* Share Section */}
                                         <div className="flex items-center gap-2 mt-1">
@@ -273,7 +273,7 @@ export default function ProductCard({
                                                         setIsCopied(true);
                                                         setTimeout(() => setIsCopied(false), 2000);
                                                     }}
-                                                    className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-[#EF2460] transition-all hover:scale-105 relative group shadow-sm"
+                                                    className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-[#6A3E1D] transition-all hover:scale-105 relative group shadow-sm"
                                                     title="Copy Link"
                                                 >
                                                     {isCopied ? <Check size={18} className="text-green-600" /> : <Copy size={18} />}
@@ -318,7 +318,7 @@ export default function ProductCard({
                                             <div className="flex items-center gap-1 bg-white border border-gray-200 rounded-full p-1.5 shadow-sm">
                                                 <button
                                                     onClick={handleDecrement}
-                                                    className="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-600 hover:bg-[#EF2460] hover:text-white transition-colors disabled:opacity-50 disabled:hover:bg-gray-50 disabled:hover:text-gray-600"
+                                                    className="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-600 hover:bg-[#6A3E1D] hover:text-white transition-colors disabled:opacity-50 disabled:hover:bg-gray-50 disabled:hover:text-gray-600"
                                                     disabled={quantity <= 1}
                                                 >
                                                     <Minus size={18} />
@@ -326,7 +326,7 @@ export default function ProductCard({
                                                 <span className="font-bold w-12 text-center text-lg text-gray-800">{quantity}</span>
                                                 <button
                                                     onClick={handleIncrement}
-                                                    className="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-600 hover:bg-[#EF2460] hover:text-white transition-colors"
+                                                    className="w-10 h-10 flex items-center justify-center bg-gray-50 rounded-full text-gray-600 hover:bg-[#6A3E1D] hover:text-white transition-colors"
                                                 >
                                                     <Plus size={18} />
                                                 </button>
@@ -352,7 +352,7 @@ export default function ProductCard({
                                         </button>
                                         <button
                                             onClick={handleBuyNow}
-                                            className="flex-1 py-4 px-6 bg-[#EF2460] text-white rounded-2xl font-bold hover:bg-[#D0184D] transition-all duration-300 active:scale-95 shadow-[0_8px_20px_rgba(239,36,96,0.3)] hover:shadow-[0_12px_24px_rgba(239,36,96,0.4)] ring-4 ring-[#EF2460]/10"
+                                            className="flex-1 py-4 px-6 bg-[#6A3E1D] text-white rounded-2xl font-bold hover:bg-[#D0184D] transition-all duration-300 active:scale-95 shadow-[0_8px_20px_rgba(239,36,96,0.3)] hover:shadow-[0_12px_24px_rgba(239,36,96,0.4)] ring-4 ring-[#6A3E1D]/10"
                                         >
                                             Buy Now
                                         </button>

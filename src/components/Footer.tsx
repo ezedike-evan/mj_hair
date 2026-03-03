@@ -28,7 +28,7 @@ export default function Footer() {
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-[#EF2460] transition w-full md:w-[300px]"
+                            className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-[#6A3E1D] transition w-full md:w-[300px]"
                         />
                         <button className="bg-[#BD713E] text-white px-6 py-3 rounded-xl font-bold transition shadow-lg whitespace-nowrap">
                             Sign Up

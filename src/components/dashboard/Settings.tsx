@@ -38,7 +38,7 @@ export default function Settings() {
                                 </div>
                                 <button
                                     onClick={() => setShowHistory(!showHistory)}
-                                    className="text-xs font-bold text-gray-500 hover:text-[#EF2460] bg-white px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-1"
+                                    className="text-xs font-bold text-gray-500 hover:text-[#6A3E1D] bg-white px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-1"
                                 >
                                     {showHistory ? "Hide" : "View"}
                                     {showHistory ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
@@ -100,7 +100,7 @@ export default function Settings() {
                 </div>
 
                 <div className="pt-4">
-                    <button 
+                    <button
                         onClick={() => {
                             if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
                                 // In a real app, this would call a deletion mutation
@@ -137,7 +137,7 @@ function SettingItem({ icon, title, subtitle, toggle, defaultChecked = false }: 
             {toggle && (
                 <button
                     onClick={() => setIsChecked(!isChecked)}
-                    className={`w-12 h-6 rounded-full p-1 transition-colors ${isChecked ? 'bg-[#EF2460]' : 'bg-gray-200'}`}
+                    className={`w-12 h-6 rounded-full p-1 transition-colors ${isChecked ? 'bg-[#6A3E1D]' : 'bg-gray-200'}`}
                 >
                     <div className={`w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${isChecked ? 'translate-x-6' : 'translate-x-0'}`} />
                 </button>

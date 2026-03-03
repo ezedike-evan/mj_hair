@@ -104,7 +104,7 @@ export default function ShopSection() {
                         <div className="relative">
                             <button
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                className="w-full px-6 py-4 flex justify-between items-center rounded-2xl bg-white border border-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#EF2460]/20 transition-all active:scale-[0.99]"
+                                className="w-full px-6 py-4 flex justify-between items-center rounded-2xl bg-white border border-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#6A3E1D]/20 transition-all active:scale-[0.99]"
                             >
                                 <span className="font-['Comfortaa'] font-bold text-gray-700 capitalize">
                                     {activeCategory || "Select Category"}
@@ -138,7 +138,7 @@ export default function ShopSection() {
                                                 }}
                                                 className={`w-full text-left px-6 py-3 font-['Manrope'] font-semibold transition-colors
                                                 ${activeCategory === category.name
-                                                        ? 'bg-[#EF2460]/5 text-[#EF2460]'
+                                                        ? 'bg-[#6A3E1D]/5 text-[#6A3E1D]'
                                                         : 'text-gray-600 hover:bg-gray-50'
                                                     }`}
                                             >
@@ -157,7 +157,7 @@ export default function ShopSection() {
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Search for hair products..."
-                                className="w-full px-6 py-4 pr-12 rounded-2xl bg-white border border-gray-100 focus:border-[#EF2460] focus:ring-2 focus:ring-[#EF2460]/10 focus:outline-none font-['Manrope'] text-gray-700 placeholder-gray-400 shadow-sm transition-all"
+                                className="w-full px-6 py-4 pr-12 rounded-2xl bg-white border border-gray-100 focus:border-[#6A3E1D] focus:ring-2 focus:ring-[#6A3E1D]/10 focus:outline-none font-['Manrope'] text-gray-700 placeholder-gray-400 shadow-sm transition-all"
                             />
                             <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#C9834E] text-white p-2.5 rounded-xl hover:bg-[#C91A4B] transition shadow-md group-focus-within:scale-110">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,7 +169,7 @@ export default function ShopSection() {
 
                     {isLoading ? (
                         <div className="flex justify-center items-center h-64 w-full col-span-full">
-                            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#EF2460]"></div>
+                            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#6A3E1D]"></div>
                         </div>
                     ) : (
                         <motion.div
