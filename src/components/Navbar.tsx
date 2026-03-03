@@ -140,7 +140,7 @@ export default function Navbar() {
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                            className="absolute right-0 top-0 h-full w-[280px] bg-gradient-to-b from-[#6A3E1D] to-[#861134] shadow-2xl"
+                            className="absolute right-0 top-0 h-full w-[280px] bg-[#6A3E1D] shadow-2xl"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="flex flex-col h-full justify-center items-center px-8">
