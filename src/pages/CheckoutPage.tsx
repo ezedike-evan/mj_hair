@@ -154,13 +154,7 @@ export default function CheckoutPage() {
     }, [isLoaded, isSignedIn, user, customer, hasAutofilled]);
 
 
-    useEffect(() => {
-        if (totalAmount > 0 && !clientSecret) {
-            createPaymentIntent({ amount: Math.round(totalAmount * 100) })
-                .then((res) => setClientSecret(res.clientSecret ?? ""))
-                .catch(console.error);
-        }
-    }, [totalAmount, createPaymentIntent, clientSecret]);
+
 
     const handleOrderCreation = async (paymentIntentId: string) => {
         try {
@@ -230,6 +224,20 @@ export default function CheckoutPage() {
             }
         },
     }), [clientSecret]);
+
+    useEffect(() => {
+        if (finalTotal > 0) {
+            // We want to update the payment intent if the amount has changed significantly
+            createPaymentIntent({
+                amount: Math.round(finalTotal * 100),
+                email: form.email || undefined
+            })
+                .then((res) => {
+                    setClientSecret(res.clientSecret ?? "");
+                })
+                .catch(console.error);
+        }
+    }, [finalTotal, createPaymentIntent, form.email]); // Added form.email to dependency
 
     const isFormValid = useMemo(() => {
         return Boolean(
@@ -410,7 +418,7 @@ export default function CheckoutPage() {
                             </h2>
                             <div>
                                 {clientSecret && form.country ? (
-                                    <Elements options={paymentElementOptions} stripe={stripePromise}>
+                                    <Elements key={clientSecret} options={paymentElementOptions} stripe={stripePromise}>
                                         <CheckoutForm
                                             totalAmount={finalTotal}
                                             onSubmitSuccess={handleOrderCreation}
