@@ -4,10 +4,35 @@ import { Link } from "react-router-dom";
 import { siInstagram, siWhatsapp } from 'simple-icons/icons';
 import { useState } from "react";
 import OrderPolicyModal from "./OrderPolicyModal";
+import { useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 
 export default function Footer() {
     const [isOrderPolicyOpen, setIsOrderPolicyOpen] = useState(false);
+
+    const subscribeToNewsletter = useMutation(api.newsletter.subscribe);
+    const [email, setEmail] = useState("");
+    const [isSubscribing, setIsSubscribing] = useState(false);
+
+    const handleSubscribe = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+
+        setIsSubscribing(true);
+        try {
+            const result = await subscribeToNewsletter({ email });
+            if (result.success) {
+                setEmail("");
+                alert(result.message); // Replace with professional toast if available
+            }
+        } catch (error) {
+            console.error("Subscription error:", error);
+            alert("Failed to subscribe. Please try again.");
+        } finally {
+            setIsSubscribing(false);
+        }
+    };
 
     return (
         <footer className="relative mt-0 bg-[#6A3E1D] text-white pt-20 pb-10 overflow-hidden font-['Manrope']">
@@ -24,14 +49,22 @@ export default function Footer() {
                         <h3 className="text-2xl font-bold font-['Comfortaa'] mb-2">Join the VIP List</h3>
                         <p className="text-pink-100/80">Get exclusive offers, early access, and beauty tips.</p>
                     </div>
-                    <form className="flex w-full md:w-auto gap-2">
+                    <form onSubmit={handleSubscribe} className="flex w-full md:w-auto gap-2">
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-[#6A3E1D] transition w-full md:w-[300px]"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            disabled={isSubscribing}
+                            required
+                            className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:border-[#6A3E1D] transition w-full md:w-[300px] disabled:opacity-50"
                         />
-                        <button className="bg-[#BD713E] text-white px-6 py-3 rounded-xl font-bold transition shadow-lg whitespace-nowrap">
-                            Sign Up
+                        <button
+                            type="submit"
+                            disabled={isSubscribing}
+                            className="bg-[#BD713E] text-white px-6 py-3 rounded-xl font-bold transition shadow-lg whitespace-nowrap disabled:opacity-50 hover:bg-[#A55416]"
+                        >
+                            {isSubscribing ? "Subscribing..." : "Sign Up"}
                         </button>
                     </form>
                 </div>
@@ -111,7 +144,7 @@ export default function Footer() {
 
                 {/* Footer Bottom */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-                     <a href="https://wa.me/2349120014546" target="_blank" rel="noopener noreferrer" className="hover:text-[#BD713E] transition"><p>© Designed by corewave media</p></a>
+                    <a href="https://wa.me/2349120014546" target="_blank" rel="noopener noreferrer" className="hover:text-[#BD713E] transition"><p>© Designed by corewave media</p></a>
                     <div className="flex gap-6 items-center">
                         <div className="flex gap-2">
                             <span className="bg-white/10 px-2 py-1 rounded text-xs text-white/80">Visa</span>

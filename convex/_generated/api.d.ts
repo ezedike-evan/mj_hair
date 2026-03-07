@@ -11,7 +11,9 @@
 import type * as admin from "../admin.js";
 import type * as customers from "../customers.js";
 import type * as dashboard from "../dashboard.js";
+import type * as emails from "../emails.js";
 import type * as http from "../http.js";
+import type * as newsletter from "../newsletter.js";
 import type * as orders from "../orders.js";
 import type * as paymentMethods from "../paymentMethods.js";
 import type * as payments from "../payments.js";
@@ -32,7 +34,9 @@ declare const fullApi: ApiFromModules<{
   admin: typeof admin;
   customers: typeof customers;
   dashboard: typeof dashboard;
+  emails: typeof emails;
   http: typeof http;
+  newsletter: typeof newsletter;
   orders: typeof orders;
   paymentMethods: typeof paymentMethods;
   payments: typeof payments;

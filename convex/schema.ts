@@ -167,4 +167,9 @@ export default defineSchema({
         clerkId: v.optional(v.string()), // Nullable if not logged in
         visitedAt: v.number(),
     }).index("by_ipHash", ["ipHash"]),
+
+    newsletter: defineTable({
+        email: v.string(),
+        subscribedAt: v.number(),
+    }).index("by_email", ["email"]),
 });

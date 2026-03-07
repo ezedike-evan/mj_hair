@@ -145,6 +145,19 @@ export const createOrder = mutation({
             });
         }
 
+        // Send order confirmation emails
+        await ctx.scheduler.runAfter(0, internal.emails.sendOrderConfirmation, {
+            email: customerEmail,
+            name: customerName,
+            orderId: orderId,
+            totalPrice: finalTotal,
+            items: items.map(item => ({
+                name: item.name,
+                quantity: item.quantity,
+                price: item.price,
+            })),
+        });
+
         return { orderId, finalTotal, shippingCost };
     },
 });
@@ -254,6 +267,19 @@ export const createOrderInternal = internalMutation({
             });
         }
 
+        // Send order confirmation emails
+        await ctx.scheduler.runAfter(0, internal.emails.sendOrderConfirmation, {
+            email: customerEmail,
+            name: customerName,
+            orderId: orderId,
+            totalPrice: finalTotal,
+            items: items.map(item => ({
+                name: item.name,
+                quantity: item.quantity,
+                price: item.price,
+            })),
+        });
+
         return orderId;
     },
 });
@@ -264,10 +290,20 @@ export const updateOrderStatus = mutation({
         status: v.string(),
     },
     handler: async (ctx, args) => {
-        await checkAdmin(ctx);
-        await ctx.db.patch(args.orderId, {
-            orderStatus: args.status,
-        });
+        const order = await ctx.db.get(args.orderId);
+        if (order) {
+            await ctx.db.patch(args.orderId, {
+                orderStatus: args.status,
+            });
+
+            // Send order status update email
+            await ctx.scheduler.runAfter(0, internal.emails.sendOrderStatusUpdate, {
+                email: order.customerEmail || "",
+                name: order.customerName || "Customer",
+                orderId: args.orderId,
+                status: args.status,
+            });
+        }
     },
 });
 
@@ -316,3 +352,4 @@ export const getCheckout = internalQuery({
             .unique();
     },
 });
+import { internal } from "./_generated/api";
