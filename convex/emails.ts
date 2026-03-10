@@ -11,7 +11,7 @@ export const sendWelcomeEmail = internalAction({
     email: v.string(),
     name: v.string(),
   },
-  handler: async (ctx, args) => {
+  handler: async (_ctx, args) => {
     const { email, name } = args;
     try {
       await resend.emails.send({
@@ -48,7 +48,7 @@ export const sendOrderConfirmation = internalAction({
       price: v.number(),
     })),
   },
-  handler: async (ctx, args) => {
+  handler: async (_ctx, args) => {
     const { email, name, orderId, totalPrice, items } = args;
     const itemsHtml = items.map(item => `<li>${item.name} x ${item.quantity} - £${item.price.toLocaleString()}</li>`).join("");
 
@@ -102,7 +102,7 @@ export const sendOrderStatusUpdate = internalAction({
     orderId: v.string(),
     status: v.string(),
   },
-  handler: async (ctx, args) => {
+  handler: async (_ctx, args) => {
     const { email, name, orderId, status } = args;
     try {
       await resend.emails.send({
@@ -130,7 +130,7 @@ export const sendNewsletterConfirmation = internalAction({
   args: {
     email: v.string(),
   },
-  handler: async (ctx, args) => {
+  handler: async (_ctx, args) => {
     const { email } = args;
     try {
       await resend.emails.send({
