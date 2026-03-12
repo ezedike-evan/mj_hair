@@ -1,7 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import imgBackground from "../assets/background.svg";
 import imgHero from "../assets/hero-image.png";
-import medalRibbons from "../assets/icons/medal-ribbons.svg";
 import { IconStar } from "./Icons";
 import { Link } from "react-router-dom";
 
@@ -52,20 +51,6 @@ const slideInLeft: Variants = {
     },
 };
 
-const floatIn: Variants = {
-    hidden: { opacity: 0, y: 20, scale: 0.9 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-            duration: 0.8,
-            ease: "easeOut",
-            delay: 1,
-        },
-    },
-};
-
 export default function Hero() {
     return (
         <div className="relative w-full h-max">
@@ -98,18 +83,6 @@ export default function Hero() {
                             alt="Hero Models"
                             className="w-full h-full object-cover md:object-contain drop-shadow-2xl"
                         />
-
-                        {/* UK No. 1 Badge - Floating Left */}
-                        <motion.div
-                            className="flex absolute bottom-[25%] md:bottom-[45%] left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-md px-3 py-2 md:px-4 md:py-3 rounded-2xl shadow-lg items-center gap-2 md:gap-3 scale-90 md:scale-100 origin-center"
-                            variants={floatIn}
-                            initial="hidden"
-                            animate="visible"
-                            whileHover={{ scale: 1.05 }}
-                        >
-                            <img src={medalRibbons} alt="Medal Ribbons" />
-                            <span className="font-bold text-white text-sm md:text-lg font-['Comfortaa']">UK No. 1</span>
-                        </motion.div>
 
                         {/* Ratings Badge - Floating Bottom Right (Desktop) */}
                         <motion.div
