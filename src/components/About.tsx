@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import imgBag from "../assets/a597fb58038f17b44a734de07791477dd0797eff.png";
-import imgStraightHair from "../assets/6d8b5a18e526ded7afffc43755e08f0276665eba.png";
-import imgCurlyHair from "../assets/b5e43fa3d431b7a54cde245ae230c1db7ea0d6c8.png";
+import imgStraightHair from "../assets/1f13e2d8ea5833cf356d0244eeea7ef695188dd9.jpg";
+import imgCurlyHair from "../assets/89405c89cc8d49d45a99393740e1fe3469299d97.jpg";
 
 export default function About() {
     return (

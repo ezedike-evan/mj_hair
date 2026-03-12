@@ -1,6 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
-import imgHairs from "../assets/hair1.jpg";
+import imgHairs from "../assets/1f13e2d8ea5833cf356d0244eeea7ef695188dd9.jpg";
 import imgMaintenance from "../assets/maintainence.png";
 import imgProducts from "../assets/hair.png";
 
