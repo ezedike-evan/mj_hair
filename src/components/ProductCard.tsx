@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import IconAddToCart from "../assets/icons/addtocart.svg";
-import { siFacebook, siX, siWhatsapp } from "simple-icons/icons";
+import { siInstagram, siTiktok, siWhatsapp } from "simple-icons/icons";
 import { useId, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { showToast } from "./CustomToast";
@@ -289,17 +289,17 @@ export default function ProductCard({
                                                 >
                                                     <svg role="img" viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-current"><path d={siWhatsapp.path} /></svg>
                                                 </a>
-                                                <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${window.location.origin}/shop/${id}`)}`} target="_blank" rel="noopener noreferrer"
-                                                    className="p-2 rounded-full bg-gray-100 hover:bg-[#1877F2] hover:text-white text-gray-600 transition-all hover:scale-105 shadow-sm"
-                                                    title="Share on Facebook"
+                                                <a href={`https://www.instagram.com/`} target="_blank" rel="noopener noreferrer"
+                                                    className="p-2 rounded-full bg-gray-100 hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#e6683c] hover:via-[#dc2743] hover:via-[#cc2366] hover:to-[#bc1888] hover:text-white text-gray-600 transition-all hover:scale-105 shadow-sm"
+                                                    title="Share on Instagram"
                                                 >
-                                                    <svg role="img" viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-current"><path d={siFacebook.path} /></svg>
+                                                    <svg role="img" viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-current"><path d={siInstagram.path} /></svg>
                                                 </a>
-                                                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out ${title}`)}&url=${encodeURIComponent(`${window.location.origin}/shop/${id}`)}`} target="_blank" rel="noopener noreferrer"
+                                                <a href={`https://www.tiktok.com/`} target="_blank" rel="noopener noreferrer"
                                                     className="p-2 rounded-full bg-gray-100 hover:bg-black hover:text-white text-gray-600 transition-all hover:scale-105 shadow-sm"
-                                                    title="Share on X"
+                                                    title="Share on TikTok"
                                                 >
-                                                    <svg role="img" viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-current"><path d={siX.path} /></svg>
+                                                    <svg role="img" viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-current"><path d={siTiktok.path} /></svg>
                                                 </a>
                                             </div>
                                         </div>

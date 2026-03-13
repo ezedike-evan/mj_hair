@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { Minus, Plus, ShoppingBag, Share2, ArrowLeft, Copy, Check } from "lucide-react";
-import { siFacebook, siX, siWhatsapp, siPinterest } from "simple-icons/icons";
+import { siWhatsapp, siInstagram, siTiktok } from "simple-icons/icons";
 import SEO from "../components/SEO";
 
 
@@ -210,16 +210,12 @@ export default function ProductDetails() {
                                                     href={`https://wa.me/?text=${encodeURIComponent(`Check out ${title} on MJ Hair: ${shareUrl}`)}`}
                                                 />
                                                 <SocialIcon
-                                                    icon={siFacebook}
-                                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+                                                    icon={siInstagram}
+                                                    href={`https://www.instagram.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                                                 />
                                                 <SocialIcon
-                                                    icon={siX}
-                                                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out ${title} on MJ Hair`)}&url=${encodeURIComponent(shareUrl)}`}
-                                                />
-                                                <SocialIcon
-                                                    icon={siPinterest}
-                                                    href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}&media=${encodeURIComponent(image)}&description=${encodeURIComponent(title)}`}
+                                                    icon={siTiktok}
+                                                    href={`https://www.tiktok.com/share?url=${encodeURIComponent(shareUrl)}`}
                                                 />
                                             </div>
 
