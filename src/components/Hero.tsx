@@ -130,7 +130,7 @@ export default function Hero() {
                         className="font-[ADLaM_Display] text-3xl sm:text-4xl lg:text-6xl leading-[1.2] text-[#5E4431] drop-shadow-lg"
                         variants={fadeInUp}
                     >
-                        No. 1{" "}
+                        Best {" "}
                         <motion.span
                             className="inline-block bg-[#5E4431]/50 text-white px-3 py-1 md:px-4 transform -rotate-2 rounded-xl shadow-lg"
                             variants={fadeInScale}
