@@ -115,10 +115,9 @@ export default function Footer() {
                                     onClick={() => setIsOrderPolicyOpen(true)}
                                     className="hover:text-[#BD713E] transition text-left"
                                 >
-                                    Order Policy and Return Guide
+                                    Our Policy
                                 </button>
                             </li>
-                            <li><Link to="/terms" className="hover:text-[#BD713E] transition">Terms & Privacy</Link></li>
                         </ul>
                     </div>
 

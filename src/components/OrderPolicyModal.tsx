@@ -9,12 +9,14 @@ interface OrderPolicyModalProps {
 
 export default function OrderPolicyModal({ isOpen, onClose }: OrderPolicyModalProps) {
     const policies = [
-        "All wig are new and carefully inspected before delivery",
-        "No refunds after wig lace is cut or worn",
-        "Wigs can only be returned within 24 hours, unworn with original packaging",
-        "Delivery cost is non-refundable",
-        "Your order can only been sent after payment is made",
-        "If your payment is by installment ensure you pay within 2months, if after 2months you still don't complete your payment your order might be sold and you will be asked to change with another unit"
+        "PLEASE TAKE TIME TO READ AS PROCEEDING TO MAKE PAYMENT MEANS YOU AGREE TO OUR TERMS",
+        "ORDERS PAYED FOR CANNOT BE CANCELLED PLS BE SURE YOU REALLY WANT TO A PARTICULAR HAIR BEFORE MAKING PAYMENT",
+        "PROCESSING TIME FOR ORDERS IS 2 TO 3 WORKING DAYS AND 6 TO 7 WORKING DAYS FOR CUSTOMIZED ORDERS",
+        "WE ACCEPT EXCHANGE IF UNIT IS IN GOOD CONDITION AND RETURNED WITHIN 48HRS ( IF YOU STAY IN UK AND 7 WORKING DAYS (IF ITS INTERNATIONAL)",
+        "COST OF EXCHANGE WILL BE INCURRED BY SENDER",
+        "WE OPERATE A NO REFUND POLICY ON HAIRS THAT MATCH ALL DESCRIPTION ADVERTISED",
+        "KINDLY NOTE THAT ALL RETURNED ORDERS MUST BE RETURNED EXACTLY HOW THE PRODUCT WAS SENT, DAMAGE FREE WITH CLOSURE AND FRONTAL LACES STILL INTACT. HAIR PURCHASED BY A WALK- IN IS FINAL",
+        "WE ARE DEDICATED TO PROVIDING YOU WITH THE HIGHEST QUALITY SERVICE, ALWAYS GROUNDED IN TRUTH AND TRANSPARENCY."
     ];
 
     return (
@@ -48,44 +50,16 @@ export default function OrderPolicyModal({ isOpen, onClose }: OrderPolicyModalPr
                                 >
                                     <X size={24} />
                                 </button>
-                                <h2 className="font-['Poppins'] font-extrabold text-3xl text-[#b02e6c] uppercase tracking-wide">
+                                <h2 className="font-['Poppins'] font-extrabold text-3xl text-[#6A3E1D] uppercase tracking-wide">
                                     Order Policy
                                 </h2>
                             </div>
-                            <div className="px-4 pb-6 space-y-6 h-max">
+                            <div className="px-8 pb-6 space-y-6 h-max overflow-y-auto">
                                 {policies.map((policy, index) => (
-                                    <div key={index} className="flex relative items-stretch min-h-[60px] mt-4">
-                                        <div className="relative z-20 flex-shrink-0 h-12 w-20 bg-[#b02e6c] flex items-center justify-center rounded-r-full pr-4 shadow-lg -rotate-20 origin-bottom-right -mr-6 -mt-4">
-                                            <span className="font-bold text-3xl text-white">{index + 1}</span>
-                                        </div>
-                                        <div className="relative flex-grow flex items-center justify-between gap-4 overflow-hidden bg-[#5e3a07] rounded-r-full pl-6 shadow-md z-10">
-                                            <p className="text-white text-md font-['bree_serif'] font-bold leading-tight relative z-10 py-2">
-                                                {policy}
-                                            </p>
-                                            <div className="flex-shrink-0 h-full w-6 bg-[#b02e6c] z-20"></div>
-                                        </div>
-                                    </div>
+                                    <p key={index} className="text-black text-md font-['Poppins'] font-semibold leading-tight py-2">
+                                        {policy}
+                                    </p>
                                 ))}
-                            </div>
-                            <div className="bg-white shrink-0">
-                                <div className="bg-[#99004d] p-3 text-center">
-                                    <h3 className="font-['Poppins'] font-bold text-2xl text-white uppercase tracking-wider">
-                                        Return Guild
-                                    </h3>
-                                </div>
-                                <div className="p-5 bg-white">
-                                    <ul className="space-y-3 text-black text-sm font-['Manrope'] font-medium">
-                                        {[
-                                            "Order within UK must be returned within 48 hours in good condition",
-                                            "International order must be returned within 7 days"
-                                        ].map((item, idx) => (
-                                            <li key={idx} className="flex items-start gap-3">
-                                                <span className="mt-1.5 w-2 h-2 bg-[#99004d] rotate-45 shrink-0" />
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
                             </div>
                         </motion.div>
                     </motion.div>
