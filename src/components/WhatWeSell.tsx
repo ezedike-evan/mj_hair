@@ -2,6 +2,7 @@ import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import imgHairs from "../assets/1f13e2d8ea5833cf356d0244eeea7ef695188dd9.jpg";
 import imgMaintenance from "../assets/maintainence.png";
+import imgProducts from "../assets/hair.png";
 
 export default function WhatWeSell() {
     const items = [
@@ -12,7 +13,11 @@ export default function WhatWeSell() {
         {
             title: "Hair\nMaintenance kit",
             img: imgMaintenance,
-        }
+        },
+        {
+            title: "Hair\nProducts",
+            img: imgProducts,
+        },
     ];
 
     const containerVariants: Variants = {
@@ -50,7 +55,7 @@ export default function WhatWeSell() {
             </motion.h2>
 
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-[50px] w-fit mx-auto"
+                className="grid grid-cols-1 md:grid-cols-3 gap-[50px] w-fit mx-auto"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
