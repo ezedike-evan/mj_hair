@@ -149,6 +149,7 @@ export default function Footer() {
                             <span className="bg-white/10 px-2 py-1 rounded text-xs text-white/80">Visa</span>
                             <span className="bg-white/10 px-2 py-1 rounded text-xs text-white/80">Mastercard</span>
                             <span className="bg-white/10 px-2 py-1 rounded text-xs text-white/80">PayPal</span>
+                            <span className="bg-white/10 px-2 py-1 rounded text-xs text-white/80">Clearpay</span>
                         </div>
                     </div>
                 </div>

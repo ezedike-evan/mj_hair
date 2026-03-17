@@ -47,9 +47,27 @@ export const sendOrderConfirmation = internalAction({
       quantity: v.number(),
       price: v.number(),
     })),
+    shippingAddress: v.optional(v.union(
+        v.string(),
+        v.object({
+            fullName: v.string(),
+            line1: v.string(),
+            line2: v.optional(v.string()),
+            city: v.string(),
+            postalCode: v.string(),
+            country: v.string(),
+        })
+    )),
   },
   handler: async (_ctx, args) => {
-    const { email, name, orderId, totalPrice, items } = args;
+    const { email, name, orderId, totalPrice, items, shippingAddress } = args;
+
+    let addressHtml = "Not provided";
+    if (typeof shippingAddress === "object" && shippingAddress !== null) {
+        addressHtml = `${shippingAddress.fullName || name}<br/>${shippingAddress.line1}<br/>${shippingAddress.line2 ? shippingAddress.line2 + '<br/>' : ''}${shippingAddress.city}, ${shippingAddress.postalCode}<br/>${shippingAddress.country}`;
+    } else if (shippingAddress) {
+        addressHtml = shippingAddress;
+    }
     const itemsHtml = items.map(item => `<li>${item.name} x ${item.quantity} - £${item.price.toLocaleString()}</li>`).join("");
 
     try {
@@ -65,6 +83,8 @@ export const sendOrderConfirmation = internalAction({
                         <h3>Order Summary (ID: ${orderId})</h3>
                         <ul>${itemsHtml}</ul>
                         <p><strong>Total Price: £${totalPrice.toLocaleString()}</strong></p>
+                        <h3>Shipping Details</h3>
+                        <p>${addressHtml}</p>
                         <p>We'll send you another update once your order has shipped.</p>
                         <p>Best regards,<br/>The MJ Hair Team</p>
                     </div>
@@ -84,6 +104,8 @@ export const sendOrderConfirmation = internalAction({
                         <h3>Order Details</h3>
                         <ul>${itemsHtml}</ul>
                         <p><strong>Total: £${totalPrice.toLocaleString()}</strong></p>
+                        <h3>Shipping Address</h3>
+                        <p>${addressHtml}</p>
                         <a href="https://www.mjhairpalace.co.uk/dashboard/orders" style="display: inline-block; padding: 10px 20px; background-color: #6A3E1D; color: #fff; text-decoration: none; border-radius: 5px;">View Order in Dashboard</a>
                     </div>
                 `,

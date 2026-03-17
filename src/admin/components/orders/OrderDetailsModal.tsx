@@ -67,7 +67,7 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({ isOpen, on
                                     <div className="space-y-4">
                                         <h3 className="text-sm font-semibold text-text-primary uppercase tracking-wider">Shipping Details</h3>
                                         <div className="space-y-2 text-sm text-text-secondary">
-                                            <p><span className="font-medium text-text-primary">Address:</span> {order.shippingAddress || 'N/A'}</p>
+                                            <p><span className="font-medium text-text-primary">Address:</span> {typeof order.shippingAddress === 'object' && order.shippingAddress ? `${order.shippingAddress.fullName || order.customer.name}, ${order.shippingAddress.line1}, ${order.shippingAddress.line2 ? order.shippingAddress.line2 + ', ' : ''}${order.shippingAddress.city}, ${order.shippingAddress.postalCode}, ${order.shippingAddress.country}` : order.shippingAddress || 'N/A'}</p>
                                             <p><span className="font-medium text-text-primary">Order Date:</span> {new Date(order.createdAt).toLocaleString()}</p>
                                             <p><span className="font-medium text-text-primary">Status:</span> <span className="capitalize">{order.orderStatus}</span></p>
                                         </div>

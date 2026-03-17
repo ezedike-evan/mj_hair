@@ -18,7 +18,7 @@ export default function HowToOrder() {
         },
         {
             title: "Make\nPayment",
-            desc: "Using your card or apple pay or klarna, you simply make payment and enter your address.",
+            desc: "Using your card or clearpay, you simply make payment and enter your address.",
             icon: cardIcon,
         },
         {

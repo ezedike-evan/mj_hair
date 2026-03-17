@@ -11,7 +11,14 @@ export interface Order {
     orderStatus: string;
     paymentStatus: string;
     totalPrice: number;
-    shippingAddress: string;
+    shippingAddress: string | {
+        fullName: string;
+        line1: string;
+        line2?: string;
+        city: string;
+        postalCode: string;
+        country: string;
+    };
     createdAt: number;
     customer: {
         name: string;

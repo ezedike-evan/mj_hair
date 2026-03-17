@@ -7,12 +7,13 @@ export default function SuccessPage() {
     const { clearCart } = useCart();
     const [searchParams] = useSearchParams();
     const sessionId = searchParams.get("session_id");
+    const paymentIntent = searchParams.get("payment_intent");
 
     useEffect(() => {
-        if (sessionId) {
+        if (sessionId || paymentIntent) {
             clearCart();
         }
-    }, [sessionId, clearCart]);
+    }, [sessionId, paymentIntent, clearCart]);
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6 text-center">

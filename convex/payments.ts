@@ -13,14 +13,12 @@ export const createPaymentIntent = action({
             amount,
             currency: "gbp",
             receipt_email: email,
-            automatic_payment_methods: {
-                enabled: true,
-                allow_redirects: 'always'
-            },
+            payment_method_types: ['card', 'afterpay_clearpay'],
         });
 
         return {
             clientSecret: paymentIntent.client_secret,
+            paymentIntentId: paymentIntent.id,
         };
     },
 });

@@ -97,21 +97,44 @@ export const createOrder = mutation({
         const finalTotal = subtotal + shippingCost;
 
         // 1. Create Order
-        const orderId = await ctx.db.insert("orders", {
-            clerkId: clerkId || undefined, // Store clerkId if available
-            customerName,
-            customerEmail,
-            customerPhone: phone,
-            items,
-            totalPrice: finalTotal,
-            shippingCost,
-            orderStatus: "pending",
-            paymentStatus: "paid",
-            shippingAddress,
-            paymentIntentId,
-            checkoutPaymentId,
-            createdAt: Date.now(),
-        });
+        let orderId;
+        const existingOrder = paymentIntentId
+            ? await ctx.db
+                  .query("orders")
+                  .withIndex("by_paymentIntentId", (q) => q.eq("paymentIntentId", paymentIntentId))
+                  .first()
+            : null;
+
+        if (existingOrder) {
+            orderId = existingOrder._id;
+            await ctx.db.patch(orderId, {
+                items,
+                totalPrice: finalTotal,
+                shippingCost,
+                shippingAddress,
+                customerName,
+                customerEmail,
+                customerPhone: phone,
+                orderStatus: "pending",
+                paymentStatus: "pending",
+            });
+        } else {
+            orderId = await ctx.db.insert("orders", {
+                clerkId: clerkId || undefined, // Store clerkId if available
+                customerName,
+                customerEmail,
+                customerPhone: phone,
+                items,
+                totalPrice: finalTotal,
+                shippingCost,
+                orderStatus: "pending",
+                paymentStatus: "pending",
+                shippingAddress,
+                paymentIntentId,
+                checkoutPaymentId,
+                createdAt: Date.now(),
+            });
+        }
 
         // 2. Manage Customer Record
         // Try to find existing customer by email (guest or user) or clerkId
@@ -156,6 +179,7 @@ export const createOrder = mutation({
                 quantity: item.quantity,
                 price: item.price,
             })),
+            shippingAddress,
         });
 
         return { orderId, finalTotal, shippingCost };
@@ -214,7 +238,7 @@ export const createOrderInternal = internalMutation({
             totalPrice: finalTotal,
             shippingCost,
             orderStatus: "pending",
-            paymentStatus: "paid",
+            paymentStatus: "pending",
             shippingAddress,
             sessionId,
             paymentIntentId,
@@ -278,6 +302,7 @@ export const createOrderInternal = internalMutation({
                 quantity: item.quantity,
                 price: item.price,
             })),
+            shippingAddress,
         });
 
         return orderId;

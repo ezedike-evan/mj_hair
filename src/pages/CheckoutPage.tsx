@@ -28,11 +28,15 @@ interface Address {
 
 function CheckoutForm({
     totalAmount,
-    onSubmitSuccess,
+    paymentIntentId,
+    onBeforeConfirm,
+    onPaymentSuccess,
     isFormComplete
 }: {
     totalAmount: number;
-    onSubmitSuccess: (paymentIntentId: string) => void;
+    paymentIntentId: string;
+    onBeforeConfirm: (paymentIntentId: string) => Promise<boolean>;
+    onPaymentSuccess: () => void;
     isFormComplete: boolean;
 }) {
     const stripe = useStripe();
@@ -56,6 +60,13 @@ function CheckoutForm({
         setIsProcessing(true);
 
         try {
+            const orderCreated = await onBeforeConfirm(paymentIntentId);
+            if (!orderCreated) {
+                setMessage("Failed to initialize order.");
+                setIsProcessing(false);
+                return;
+            }
+
             const { error, paymentIntent } = await stripe.confirmPayment({
                 elements,
                 confirmParams: {
@@ -69,7 +80,7 @@ function CheckoutForm({
                 setIsProcessing(false);
             } else if (paymentIntent && paymentIntent.status === "succeeded") {
                 setIsProcessing(false);
-                onSubmitSuccess(paymentIntent.id);
+                onPaymentSuccess();
             } else {
                 setMessage("Payment processing...");
                 setIsProcessing(false);
@@ -108,6 +119,7 @@ export default function CheckoutPage() {
     const customer = useQuery(api.customers.getCurrentCustomer);
 
     const [clientSecret, setClientSecret] = useState("");
+    const [paymentIntentId, setPaymentIntentId] = useState("");
 
     // Address State matching the updated schema structure somewhat flattened for form
     const [form, setForm] = useState<Address>({
@@ -156,7 +168,7 @@ export default function CheckoutPage() {
 
 
 
-    const handleOrderCreation = async (paymentIntentId: string) => {
+    const handleBeforeConfirm = async (piId: string) => {
         try {
             const orderItems = cart.map(item => ({
                 productId: item.productId as Id<"products">,
@@ -181,18 +193,23 @@ export default function CheckoutPage() {
                     postalCode: form.postalCode,
                     country: form.country,
                 },
-                paymentIntentId,
+                paymentIntentId: piId,
                 customerName: form.fullName,
                 customerEmail: form.email,
                 customerPhone: form.phone,
             });
 
-            clearCart();
-            navigate("/success");
+            return true;
         } catch (error) {
             console.error("Order creation failed:", error);
             alert("Order creation failed. Please contact support.");
+            return false;
         }
+    };
+
+    const handlePaymentSuccess = () => {
+        clearCart();
+        navigate("/success");
     };
 
     const shippingCost = useMemo(() => {
@@ -234,6 +251,7 @@ export default function CheckoutPage() {
             })
                 .then((res) => {
                     setClientSecret(res.clientSecret ?? "");
+                    setPaymentIntentId(res.paymentIntentId ?? "");
                 })
                 .catch(console.error);
         }
@@ -421,7 +439,9 @@ export default function CheckoutPage() {
                                     <Elements key={clientSecret} options={paymentElementOptions} stripe={stripePromise}>
                                         <CheckoutForm
                                             totalAmount={finalTotal}
-                                            onSubmitSuccess={handleOrderCreation}
+                                            paymentIntentId={paymentIntentId}
+                                            onBeforeConfirm={handleBeforeConfirm}
+                                            onPaymentSuccess={handlePaymentSuccess}
                                             isFormComplete={isFormValid}
                                         />
                                     </Elements>
