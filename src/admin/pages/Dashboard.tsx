@@ -58,7 +58,6 @@ export const Dashboard: React.FC = () => {
                         <StatsCard
                             title="Total Income"
                             value={`£${totalRevenue.toLocaleString()}`}
-                            trend="+0%" // Trend calculation requires historical data not yet in prompt specs
                             isPositive={true}
                         />
                     </motion.div>
@@ -66,7 +65,6 @@ export const Dashboard: React.FC = () => {
                         <StatsCard
                             title="Total Sales"
                             value={totalSales.toLocaleString()}
-                            trend="+0%"
                             isPositive={true}
                         />
                     </motion.div>
@@ -74,7 +72,6 @@ export const Dashboard: React.FC = () => {
                         <StatsCard
                             title="Total Website Visits"
                             value={totalVisitors.toString()}
-                            trend="+0%"
                             isPositive={true}
                         />
                     </motion.div>
