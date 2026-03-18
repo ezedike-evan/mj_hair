@@ -4,7 +4,7 @@ import { checkAdmin } from "./admin";
 
 export const trackVisit = mutation({
     args: {
-        ipHash: v.string(), // Client will send a fingerprint/hash
+        ipHash: v.string(),
         userAgent: v.string(),
         path: v.string(),
     },
