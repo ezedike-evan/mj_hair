@@ -92,6 +92,7 @@ export const createOrder = mutation({
         const phone = customerPhone || "";
 
         // Calculate shipping cost server-side
+
         const shippingCost = shippingAddress.country === "GB" ? 5 : 35;
         const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         const finalTotal = subtotal + shippingCost;
@@ -100,9 +101,9 @@ export const createOrder = mutation({
         let orderId;
         const existingOrder = paymentIntentId
             ? await ctx.db
-                  .query("orders")
-                  .withIndex("by_paymentIntentId", (q) => q.eq("paymentIntentId", paymentIntentId))
-                  .first()
+                .query("orders")
+                .withIndex("by_paymentIntentId", (q) => q.eq("paymentIntentId", paymentIntentId))
+                .first()
             : null;
 
         if (existingOrder) {
@@ -201,6 +202,7 @@ export const createOrderInternal = internalMutation({
             line1: v.string(),
             line2: v.optional(v.string()),
             city: v.string(),
+            state: v.optional(v.string()),
             postalCode: v.string(),
             country: v.string(),
         }),

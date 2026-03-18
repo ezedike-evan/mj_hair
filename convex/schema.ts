@@ -81,6 +81,7 @@ export default defineSchema({
                 line1: v.string(),
                 line2: v.optional(v.string()),
                 city: v.string(),
+                state: v.optional(v.string()),
                 postalCode: v.string(),
                 country: v.string(),
             }),
@@ -117,6 +118,7 @@ export default defineSchema({
                 line1: v.string(),
                 line2: v.optional(v.string()),
                 city: v.string(),
+                state: v.optional(v.string()),
                 postalCode: v.string(),
                 country: v.string(),
             })
