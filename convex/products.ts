@@ -1,6 +1,7 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
 import { checkAdmin } from "./admin";
+import { api } from "./_generated/api";
 
 // Products
 export const generateUploadUrl = mutation(async (ctx) => {
@@ -65,13 +66,21 @@ export const addProduct = mutation({
         selectedTags: v.array(v.string()),
 
         status: v.union(v.literal("published"), v.literal("draft")),
+        expiresInHours: v.optional(v.number()),
     },
     handler: async (ctx, args) => {
         await checkAdmin(ctx);
-        await ctx.db.insert("products", {
-            ...args,
+        const { expiresInHours, ...productData } = args;
+        const productId = await ctx.db.insert("products", {
+            ...productData,
             createdAt: Date.now(),
         });
+
+        if (expiresInHours) {
+            await ctx.scheduler.runAfter(expiresInHours * 60 * 60 * 1000, api.products.deleteProductInternal, { id: productId });
+        }
+
+        return productId;
     },
 });
 
