@@ -148,10 +148,9 @@ export const processCustomers = (orders: Order[]) => {
             };
         }
         customerMap[customerKey].totalOrders += 1;
-        if (order.orderStatus === "completed") {
-            customerMap[customerKey].totalSpent += order.totalPrice;
-            customerMap[customerKey].status = "Active";
-        }
+        customerMap[customerKey].totalSpent += order.totalPrice;
+        customerMap[customerKey].status = "Active";
+
         if (order.createdAt > customerMap[customerKey].lastOrderDate) {
             customerMap[customerKey].lastOrderDate = order.createdAt;
         }
