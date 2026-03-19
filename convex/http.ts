@@ -92,4 +92,25 @@ http.route({
     handler: handleStripeWebhook,
 });
 
+http.route({
+    path: "/stripe-webhook/",
+    method: "POST",
+    handler: handleStripeWebhook,
+});
+
+http.route({
+    path: "/stripe-webhook",
+    method: "GET",
+    handler: httpAction(async () => {
+        return new Response("Stripe Webhook is active. Stripe sends POST requests here.", { status: 200 });
+    }),
+});
+
+http.route({
+    path: "/stripe-webhook/",
+    method: "GET",
+    handler: httpAction(async () => {
+        return new Response("Stripe Webhook is active. Stripe sends POST requests here.", { status: 200 });
+    }),
+});
 export default http;

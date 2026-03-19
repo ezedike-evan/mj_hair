@@ -59,6 +59,12 @@ export const getUserOrders = query({
 
 import { internalMutation, internalQuery } from "./_generated/server";
 
+export const getAllOrdersInternal = internalQuery({
+    handler: async (ctx) => {
+        return await ctx.db.query("orders").collect();
+    }
+});
+
 export const createOrder = mutation({
     args: {
         items: v.array(v.object({
