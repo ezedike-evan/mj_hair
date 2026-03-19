@@ -122,8 +122,13 @@ export const processCustomers = (orders: Order[]) => {
     const customerMap: Record<string, Customer> = {};
 
     orders.forEach((order) => {
+        const formatAddress = (addr: any) => {
+            if (typeof addr === "string") return addr;
+            if (!addr || typeof addr !== "object") return "Unknown";
+            return [addr.city, addr.state, addr.country].filter(Boolean).join(", ");
+        };
+
         const email = order.customer.email || "unknown@example.com";
-        // If email is unknown, we might want a unique ID strategy, but here we assume email is key
         const customerKey = email === "unknown@example.com" ? order.clerkId : email;
 
         if (!customerMap[customerKey]) {
@@ -133,7 +138,7 @@ export const processCustomers = (orders: Order[]) => {
                 name: order.customer.name,
                 email: email,
                 phone: order.customer.phone,
-                location: order.customer.address,
+                location: formatAddress(order.customer.address),
                 totalOrders: 0,
                 totalSpent: 0,
                 lastOrderDate: 0,
@@ -156,7 +161,7 @@ export const processCustomers = (orders: Order[]) => {
         // Update latest info if needed
         customerMap[customerKey].name = order.customer.name;
         customerMap[customerKey].phone = order.customer.phone;
-        customerMap[customerKey].location = order.customer.address;
+        customerMap[customerKey].location = formatAddress(order.customer.address);
         if (order.customer.avatar) {
             customerMap[customerKey].avatar = order.customer.avatar;
         }
