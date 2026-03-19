@@ -45,10 +45,9 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
             };
         }
 
-        const safeOrders = (orders as Order[]);
+        const safeOrders = (orders as Order[]).filter(o => o.paymentStatus === "paid");
         const safeProducts = (products as Product[]);
 
-        const validCompletedOrders = safeOrders.filter(o => o.orderStatus === "completed");
 
         // Basic Stats
         const orderCounts = calculateOrderCounts(safeOrders);
@@ -61,16 +60,14 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         // Recent Transactions
         const recentTransactions = safeOrders.slice(0, 5);
 
-        // Category Breakdown (using completed orders as per original logic)
-        const categoryBreakdown = calculateCategoryBreakdown(validCompletedOrders, safeProducts);
+        // Category Breakdown (using paid orders)
+        const categoryBreakdown = calculateCategoryBreakdown(safeOrders, safeProducts);
 
         // Product Stats (Top Products/Best Selling)
-        // Using validCompletedOrders as suggested by comments in original file
-        const { bestSellingProduct, topProducts } = calculateProductStats(validCompletedOrders, safeProducts);
+        const { bestSellingProduct, topProducts } = calculateProductStats(safeOrders, safeProducts);
 
         // Top Categories
-        // Using validCompletedOrders as suggested by comments in original file
-        const topCategories = calculateTopCategories(validCompletedOrders, safeProducts);
+        const topCategories = calculateTopCategories(safeOrders, safeProducts);
 
         // Customers
         const customers = processCustomers(safeOrders);

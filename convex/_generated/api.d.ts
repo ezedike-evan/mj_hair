@@ -21,6 +21,7 @@ import type * as products from "../products.js";
 import type * as sales from "../sales.js";
 import type * as settings from "../settings.js";
 import type * as stripe from "../stripe.js";
+import type * as sync from "../sync.js";
 import type * as temp from "../temp.js";
 import type * as users from "../users.js";
 import type * as visitors from "../visitors.js";
@@ -45,6 +46,7 @@ declare const fullApi: ApiFromModules<{
   sales: typeof sales;
   settings: typeof settings;
   stripe: typeof stripe;
+  sync: typeof sync;
   temp: typeof temp;
   users: typeof users;
   visitors: typeof visitors;
