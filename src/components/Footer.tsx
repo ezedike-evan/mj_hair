@@ -1,5 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import imgJennyLogo from "../assets/logo.svg";
+import mjLogo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { siInstagram, siWhatsapp } from 'simple-icons/icons';
 import { useState } from "react";
@@ -73,7 +73,7 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="md:col-span-1 space-y-6">
                         <Link to="/">
-                            <img src={imgJennyLogo} alt="Jenny's Hair" className="h-10 opacity-90" />
+                            <img src={mjLogo} alt="MJ Hair Palace" className="h-10 opacity-90" />
                         </Link>
                         <p className="text-white/70 leading-relaxed text-sm">
                             Discover the best wigs and human hair with MJ HAIR PALACE

@@ -127,6 +127,10 @@ export default defineSchema({
         checkoutPaymentId: v.optional(v.string()),
         sessionId: v.optional(v.string()),
         createdAt: v.number(),
+        trackingNumber: v.optional(v.string()),
+        trackingUrl: v.optional(v.string()),
+        dispatchImageIds: v.optional(v.array(v.string())),
+        completedAt: v.optional(v.number()),
     }).index("by_clerkId", ["clerkId"]).index("by_sessionId", ["sessionId"]).index("by_paymentIntentId", ["paymentIntentId"]),
 
     checkouts: defineTable({

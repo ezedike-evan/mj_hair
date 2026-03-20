@@ -179,8 +179,8 @@ export default function ProductCard({
                         </svg>
                     </motion.button>
                     <motion.button
-                        className="absolute bottom-1 right-1 w-8 md:w-12 h-8 md:h-12 bg-[#6A3E1D] text-white rounded-full flex items-center justify-center shadow-[0_4px_14px_rgba(239,36,96,0.4)] z-30 pointer-events-auto"
-                        whileHover={{ scale: 1.2, backgroundColor: "#C91A4B" }}
+                        className="absolute bottom-1 right-1 w-8 md:w-12 h-8 md:h-12 bg-[#6A3E1D] text-white rounded-full flex items-center justify-center z-30 pointer-events-auto"
+                        whileHover={{ scale: 1.2 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={(e) => {
                             e.stopPropagation();
@@ -352,7 +352,7 @@ export default function ProductCard({
                                         </button>
                                         <button
                                             onClick={handleBuyNow}
-                                            className="flex-1 py-4 px-6 bg-[#6A3E1D] text-white rounded-2xl font-bold hover:bg-[#D0184D] transition-all duration-300 active:scale-95 shadow-[0_8px_20px_rgba(239,36,96,0.3)] hover:shadow-[0_12px_24px_rgba(239,36,96,0.4)] ring-4 ring-[#6A3E1D]/10"
+                                            className="flex-1 py-4 px-6 bg-[#6A3E1D] text-white rounded-2xl font-bold transition-all duration-300 active:scale-95"
                                         >
                                             Buy Now
                                         </button>

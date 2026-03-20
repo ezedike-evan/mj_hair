@@ -386,3 +386,53 @@ export const getCheckout = internalQuery({
     },
 });
 import { internal } from "./_generated/api";
+
+
+
+export const markOrderComplete = mutation({
+    args: {
+        orderId: v.id("orders"),
+        trackingNumber: v.string(),
+        trackingUrl: v.string(),
+        dispatchImageIds: v.optional(v.array(v.string())),
+    },
+    handler: async (ctx, args) => {
+        await checkAdmin(ctx);
+
+        const order = await ctx.db.get(args.orderId);
+        if (!order) throw new Error("Order not found");
+
+        await ctx.db.patch(args.orderId, {
+            orderStatus: "complete",
+            trackingNumber: args.trackingNumber,
+            trackingUrl: args.trackingUrl,
+            dispatchImageIds: args.dispatchImageIds ?? [],
+            completedAt: Date.now(),
+        });
+
+        // Build image URLs from storage IDs
+        const imageUrls: string[] = [];
+        for (const id of args.dispatchImageIds ?? []) {
+            const url = await ctx.storage.getUrl(id as any);
+            if (url) imageUrls.push(url);
+        }
+
+        ctx.scheduler.runAfter(0, internal.emails.sendDispatchEmail, {
+            orderId: args.orderId,
+            customerEmail: order.customerEmail ?? "",
+            customerName: order.customerName ?? "",
+            trackingNumber: args.trackingNumber,
+            trackingUrl: args.trackingUrl,
+            items: order.items.map(i => ({ name: i.name, quantity: i.quantity, price: i.price })),
+            shippingAddress: order.shippingAddress,
+            imageUrls,
+        });
+    },
+});
+
+export const generateDispatchImageUploadUrl = mutation({
+    handler: async (ctx) => {
+        await checkAdmin(ctx);
+        return await ctx.storage.generateUploadUrl();
+    },
+});

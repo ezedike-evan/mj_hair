@@ -42,7 +42,7 @@ export function AdminRoute({ children }: { children: ReactNode }) {
 
                     <div className="space-y-4">
                         <a
-                            href="https://jennyshairsandwigs.com"
+                            href="mjhairpalace.co.uk"
                             className="flex items-center justify-center gap-2 w-full py-3.5 px-6 bg-primary text-white rounded-xl hover:opacity-90 transition-opacity font-semibold shadow-sm shadow-primary/20"
                         >
                             <ExternalLink size={18} />

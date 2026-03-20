@@ -34,7 +34,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                     }`}
             >
                 <div className="p-6 flex items-center gap-3">
-                    <img src={logo} alt="Jenny Hair" className="w-full object-contain" />
+                    <img src={logo} alt="Mj Hair Palace" className="w-full object-contain" />
                 </div>
 
                 <nav className="flex-1 px-4 py-6 space-y-2">

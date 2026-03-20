@@ -3,15 +3,15 @@ import { Search, Download, ChevronLeft, ChevronRight, Truck, Clock, XCircle } fr
 import type { Order } from '../../types/analytics';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { OrderDetailsModal } from '../OrderDetailsModal';
+import { useAnalyticsStore } from '../../context/AnalyticsContext';
 
 interface OrderListProps {
     orders: Order[];
 }
 
-const tabs = ['All order', 'Completed', 'Pending', 'Canceled'];
+const tabs = ['All order', 'Complete', 'Pending', 'Canceled'];
 
-import { OrderDetailsModal } from './OrderDetailsModal';
-import { useAnalyticsStore } from '../../context/AnalyticsContext';
 
 export const OrderList: React.FC<OrderListProps> = ({ orders }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -43,7 +43,7 @@ export const OrderList: React.FC<OrderListProps> = ({ orders }) => {
 
     const filteredOrders = orders.filter(order => {
         const matchesTab = activeTab === 'All order' ||
-            (activeTab === 'Completed' && order.orderStatus === 'completed') ||
+            (activeTab === 'Completed' && order.orderStatus === 'complete') ||
             (activeTab === 'Pending' && order.orderStatus === 'pending') ||
             (activeTab === 'Canceled' && order.orderStatus === 'cancelled');
 
@@ -53,7 +53,11 @@ export const OrderList: React.FC<OrderListProps> = ({ orders }) => {
             order._id.toLowerCase().includes(searchTerm.toLowerCase()) ||
             firstProductName.toLowerCase().includes(searchTerm.toLowerCase()) ||
             order.customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            order.customer.email.toLowerCase().includes(searchTerm.toLowerCase());
+            order.customer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (typeof order.shippingAddress === 'string'
+                ? order.shippingAddress
+                : [order.shippingAddress.line1, order.shippingAddress.city, order.shippingAddress.country].filter(Boolean).join(' ')
+            ).toLowerCase().includes(searchTerm.toLowerCase());
 
         return matchesTab && matchesSearch;
     });
@@ -193,6 +197,7 @@ export const OrderList: React.FC<OrderListProps> = ({ orders }) => {
                                 <th className="py-4 px-6 text-left text-sm font-bold text-text-primary">Date</th>
                                 <th className="py-4 px-6 text-left text-sm font-bold text-text-primary">Price</th>
                                 <th className="py-4 px-6 text-left text-sm font-bold text-text-primary">Email</th>
+                                <th className="py-4 px-6 text-left text-sm font-bold text-text-primary">Address</th>
                                 <th className="py-4 px-6 text-left text-sm font-bold text-text-primary">Status</th>
                             </tr>
                         </thead>
@@ -214,7 +219,7 @@ export const OrderList: React.FC<OrderListProps> = ({ orders }) => {
 
                                 return (
                                     <tr
-                                        key={order._id}
+                                        key={index}
                                         onClick={() => setSelectedOrder(order)}
                                         className="hover:bg-text-primary/10 transition-colors cursor-pointer"
                                     >
@@ -257,6 +262,11 @@ export const OrderList: React.FC<OrderListProps> = ({ orders }) => {
                                         <td className="py-4 px-6 text-sm text-text-secondary flex items-center gap-2">
                                             <div className={`w-2 h-2 rounded-full ${order.orderStatus === 'cancelled' ? 'bg-red-500' : 'bg-green-500'}`}></div>
                                             {order.customer.email}
+                                        </td>
+                                        <td className="py-4 px-6 text-sm text-text-secondary min-w-[300px] gap-2">
+                                            {typeof order.shippingAddress === 'string'
+                                                ? order.shippingAddress
+                                                : [order.shippingAddress.line1, order.shippingAddress.city, order.shippingAddress.country].filter(Boolean).join(', ')}
                                         </td>
                                         <td className="py-4 px-6">
                                             <div className="flex items-center gap-2">
