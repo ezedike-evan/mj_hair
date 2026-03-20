@@ -202,7 +202,7 @@ export const sendDispatchEmail = internalAction({
         const resendApiKey = process.env.RESEND_API_KEY;
         const supportEmail = "mjhairpalace@gmail.com";
         const siteUrl = "https://mjhairpalace.co.uk";
-        const logoUrl = `${siteUrl}/logo.png`;
+        const logoUrl = `${siteUrl}/logo.svg`;
 
         if (!resendApiKey) {
             console.error("Missing email configuration");
